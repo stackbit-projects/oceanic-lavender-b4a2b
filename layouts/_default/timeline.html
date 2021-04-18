@@ -1,0 +1,12 @@
+{{ define "content" }}
+
+  <div>
+    {{ $display_posts := ((.Site.GetPage "section" "/posts").Pages).ByDate.Reverse }}
+    {{ range $post := $display_posts }}
+
+    <time datetime="{{ $post.Date | dateFormat "2006-01-02 15:04" }}">{{ $post.Date | dateFormat "January 02, 2006" }}</time>
+    <a href="{{ $post.URL}}">{{ $post.Params.title }}</a>
+    <br><br>
+    {{ end }}
+  </div><!-- .post-feed -->
+{{ end }}
